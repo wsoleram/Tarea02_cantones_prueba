@@ -41,18 +41,18 @@
   	    
       // retorna un color con base en la cantidad de especies
       function color(d) {
-	return d > 25 ? '#67000d' :
-	       d > 20 ? '#a50f15' :
-	       d > 15 ? '#cb181d' :
-	       d > 10 ? '#ef3b2c' :
-	       d >  5 ? '#fb6a4a' :
-	       d >  3 ? '#fc9272' :
-		        '#fcbba1';
+	return d > 50000 ?  '#67000d' :
+	       d > 100000 ? '#a50f15' :
+	       d > 150000 ? '#cb181d' :
+	       d > 200000 ? '#ef3b2c' :
+	       d > 250000 ? '#fb6a4a' :
+	                  ? '#fc9272' ;
+		        
       }	    
-      function infoRiqueza(feature, layer) {
-	var popupContent = "Riqueza de especies: ";
-	if (feature.properties && feature.properties.spprichnes) {
-	  popupContent += feature.properties.spprichnes;
+      function cantonespais(feature, layer) {
+	var popupContent = "Cantones del Pais: ";
+	if (feature.properties && feature.properties.NCANTON) {
+	  popupContent += feature.properties.NCANTON;
 	} else {
 	  popupContent += 0; 
 	}
@@ -71,7 +71,7 @@
           };
         },
 	      
-	onEachFeature: infoRiqueza
+	onEachFeature: cantonespais
       })
       riqueza.addTo(mapa);
 	
