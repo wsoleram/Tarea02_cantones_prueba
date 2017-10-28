@@ -85,7 +85,7 @@
       }).addTo(mapa);   
 	    
 		    
-      function Poblacion(feature, layer) {
+      function cantonespais(feature, layer) {
 	var popupContent = "";
 	if (feature.properties && feature.properties.NCANTON) {
 	  popupContent += feature.properties.NCANTON;
@@ -113,7 +113,7 @@
 	  });
 	},
 	      
-	onEachFeature: infoPresencia
+	onEachFeature: cantonespais
       })
       registrosPresencia.addTo(mapa);	    
 	    
