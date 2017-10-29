@@ -46,7 +46,22 @@
 	       d > 200000 ? '#ef3b2c' :
 	       d > 250000 ? '#fb6a4a' :
 	                  ? '#fc9272' ;
-       },	
+       },
+	       
+       var canton = L.geoJson(cantones, {
+        style: function (feature) {
+	  return {
+	    weight: 2,
+	    opacity: 1,
+	    color: 'white',
+	    dashArray: '3',
+	    fillOpacity: 0.7,		  
+            fillColor: color(feature.properties.canton)
+          };
+        },	       
+	       
+        
+	       
 	    
      
       cantonescr = L.geoJson(cantones, {
