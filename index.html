@@ -59,22 +59,8 @@
 	layer.bindPopup(popupContent);
       }	    	    
 	    
-      var cantonespais = L.geoJson(cantones, {
-        style: function (feature) {
-	  return {
-	    weight: 2,
-	    opacity: 1,
-	    color: 'white',
-	    dashArray: '3',
-	    fillOpacity: 0.7,		  
-            fillColor: color(feature.properties.POB_2011_T)
-          };
-        },
-	      
-	onEachFeature: cantonespais
-      })
-      riqueza.addTo(mapa);
-	
+      onEachFeature: cantonespais
+     
       cantonescr = L.geoJson(cantones, {
         style: function (feature) {
 	  return {
@@ -83,7 +69,7 @@
           };
         }     
       }).addTo(mapa);   
-	    
+      cantones.addTo(mapa);  	    
 		    
       function cantonespais(feature, layer) {
 	var popupContent = "";
@@ -92,40 +78,18 @@
 	}
 	layer.bindPopup(popupContent);
       }	    
-	    
-	    
-      registrosPresencia = L.geoJson(regpresencia, {
-        style: function (feature) {
-	  return {
-            fillColor: '#0000ff', 
-            color: '#ffffff'
-          };
-        },
-        
-	pointToLayer: function (feature, latlng) {
-	  return L.circleMarker(latlng, {
-	    radius: 3,
-	    fillColor: "#ff7800",
-	    color: "#000",
-	    weight: 1,
-	    opacity: 1,
-	    fillOpacity: 0.8
-	  });
-	},
-	      
-	onEachFeature: cantonespais
-      })
-      registrosPresencia.addTo(mapa);	    
+      onEachFeature: cantonespais
+       
 	    
       var baseLayers = {
 	"OpenStreetMap": osm,
 	 "mapbox":mbox  
       };
+	    
       var overlays = {
-	"Riqueza de especies": riqueza,
-	"Registros de presencia": registrosPresencia,
-        "Cantones del Pais": cantonescr  
+      "Cantones del Pais": cantonescr  
       };
+	    
       L.control.layers(baseLayers, overlays).addTo(mapa);
 	    
       L.control.mousePosition().addTo(mapa);
